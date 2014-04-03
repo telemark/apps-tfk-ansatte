@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Telemark fylkeskommune - Ansatte</title>
+    <meta name="description" content="Kontaktinformasjon til ansatte i Telemark fylkeskommune">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <script type="text/x-handlebars">
+      <div class="header">
+          {{input type="text" placeholder="Søk etter ansatte" value=App.query action="doSearch"}}
+          <ul class="nav nav-pills pull-right">
+              {{#link-to 'index' tagName='li'}}
+                <a {{bind-attr href="view.href"}}>Hjem</a>
+              {{/link-to}}
+              {{#link-to 'avdelinger' tagName='li'}}
+                <a {{bind-attr href="view.href"}}>Avdelinger</a>
+              {{/link-to}}
+              {{#link-to 'personvern' tagName='li'}}
+              <a {{bind-attr href="view.href"}}>Personvern</a>
+              {{/link-to}}
+          </ul>
+          <h3 class="text-muted">Telemark fylkeskommune: ansatte</h3>
+      </div>
+
+    {{outlet}}
+
+    <div class="footer">
+        <p class="credits">
+            <a href="http://www.telemark.no" target="_blank" title="Besøk websiden til Telemark fylkeskommune"><span class="glyphicon glyphicon-globe"></span> Telemark fylkeskommune</a>
+            <a href="https://github.com/telemark" target="_blank" title="Besøk Telemark fylkeskommunes side på GitHub"><span class="glyphicon glyphicon-globe"></span> GitHub</a>
+            <a href="http://apps.t-fk.no/api" target="_blank" title="Besøk Telemark fylkeskommunes sider om åpne data, deling og API"><span class="glyphicon glyphicon-globe"></span> Åpne data/deling/API</a>
+        </p>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="index">
+      <h1>Finn ansatte</h1>
+      Her kan du søke etter ansatte og se en oversikt over alle {{#link-to 'avdelinger'}}avdelinger{{/link-to}} i Telemark fylkeskommune.
+      Søkefeltet ligger øverst på siden.
+      {{#each model}}
+      hola
+      {{/each}}
+  </script>
+
+  <script type="text/x-handlebars" id="avdelinger">
+      <h2>Avdelinger</h2>
+      <ul>
+          {{#each a in model}}
+            <li>{{#link-to 'avdeling' a.departmentId}}{{a.departmentName}}{{/link-to}}</li>
+          {{/each}}
+      </ul>
+  </script>
+
+  <script type="text/x-handlebars" id="avdeling">
+      <h2>{{departmentName}}</h2>
+      {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="kart">
+      Jeg er et kart
+  </script>
+
+  <script type="text/x-handlebars" id="personvern">
+
+      <div class="col-lg-9">
+          <h1>Personvernerklæring</h1>
+
+          <div class="lead">
+              Les om hvordan Telemarks fylkeskommune samler inn og bruker informasjon om besøkende på våre nettsteder.
+          </div>
+
+          <h2>Bruk av Google Analytics</h2>
+
+          <div>
+              En del av arbeidet med å lage et brukervennlig nettsted, er å studere brukermønsteret til de som besøker nettstedet.
+          </div>
+          <div>
+              <p>
+                  For å analysere informasjonen, bruker vi analyseverktøyet Google Analytics. Verktøyet benytter informasjonskapsler/cookies, som registrerer brukernes IP-adresse, og som gir informasjon om den enkelte brukers bevegelser på nett.
+              </p>
+              <p>
+                  Eksempler på hva statistikken gir oss svar på er; hvor mange som besøker ulike sider, hvor lenge besøket varer, hvilke nettsteder brukerne kommer fra og hvilke nettlesere som benyttes. Ingen av informasjonskapslene gjør at vi kan knytte informasjon om din bruk av nettstedet til deg som enkeltperson.
+              </p>
+              <p>
+                  Informasjonen fra Google Analytics lagres på Googles servere i USA. Mottatte opplysninger er underlagt <a
+                      href="http://www.google.com/intl/no/policies/privacy/" target="_blank"><span class="glyphicon glyphicon-globe"></span> Googles retningslinjer for personvern</a>.
+              </p>
+              <p>
+                  En IP-adresse er definert som en personopplysning fordi den kan spores tilbake til en bestemt maskinvare og dermed til en enkeltperson. Derfor bruker vi et script (kode) som fjerner de siste sifrene fra IP-adressen før informasjonen lagres av Google. Dermed kan ikke den lagrede IP-adressen brukes til å identifisere den enkelte brukeren.
+              </p>
+          </div>
+      </div>
+
+      <div class="col-lg-3">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">Les mer om cookies</h3>
+              </div>
+              <div class="panel-body">
+                  <p><a href="http://www.nettvett.no/personvern/informasjonskapsler-cookies/slik-avviser-du-informasjonskapsler-cookies" target="_blank" title="Les om hvordan du avviser cookies på nettstedet nettvett.no"><span class="glyphicon glyphicon-globe"></span> Slik avviser du cookies</a> (fra nettvett.no)</p>
+                  <p><a href="http://www.nettvett.no/personvern/informasjonskapsler-cookies/slik-sletter-du-informasjonskapsler-cookies" target="_blank" title="Les om hvordan du sletter cookies på nettstedet nettvett.no"><span class="glyphicon glyphicon-globe"></span> Slik sletter du cookies</a> (fra nettvett.no)</p>
+              </div>
+          </div>
+      </div>
+
+      <div class="clearfix"></div>
+  </script>
+
+  <script type="text/x-handlebars" id="search">
+      {{#each model}}
+       {{givenName}} {{familyName}}
+      {{/each}}
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.5.0.js"></script>
+  <script src="js/app.js"></script>
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+</body>
+</html>
