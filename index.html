@@ -42,17 +42,38 @@
       <h1>Finn ansatte</h1>
       Her kan du søke etter ansatte og se en oversikt over alle {{#link-to 'avdelinger'}}avdelinger{{/link-to}} i Telemark fylkeskommune.
       Søkefeltet ligger øverst på siden.
-      {{#each model}}
-      hola
-      {{/each}}
   </script>
 
   <script type="text/x-handlebars" id="avdelinger">
       <h2>Avdelinger</h2>
-      <ul>
+      <table class="table table-striped table-hover">
+          <thead>
+              <tr>
+                  <th>Navn</th>
+                  <th>E-post</th>
+                  <th>Nettside</th>
+              </tr>
+          </thead>
+          <tbody>
           {{#each a in model}}
-            <li>{{#link-to 'avdeling' a.departmentId}}{{a.departmentName}}{{/link-to}}</li>
+            <tr>
+                <td>{{#link-to 'avdeling' a.departmentId}}{{a.departmentName}}{{/link-to}}</td>
+                <td>
+                    {{#if a.email}}
+                        <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{a.email}}">{{a.email}}</a>
+                    {{/if}}
+                </td>
+                <td>
+                    {{#if a.url}}
+                        <span class="glyphicon glyphicon-globe"></span> <a href="http://{{a.url}}">{{a.url}}</a>
+                    {{/if}}
+                </td>
+            </tr>
           {{/each}}
+          </tbody>
+      </table>
+      <ul>
+
       </ul>
   </script>
 
