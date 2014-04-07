@@ -12,7 +12,7 @@
 
   <script type="text/x-handlebars">
       <div class="header">
-          {{input type="text" placeholder="Søk etter ansatte" value=App.query action="doSearch"}}
+          {{input type="text" placeholder="Søk etter ansatte" value=search action="doSearch"}}
           <ul class="nav nav-pills pull-right">
               {{#link-to 'index' tagName='li'}}
                 <a {{bind-attr href="view.href"}}>Hjem</a>
@@ -59,6 +59,10 @@
   <script type="text/x-handlebars" id="avdeling">
       <h2>{{departmentName}}</h2>
       {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" id="ansatt">
+      <h2>{{givenName}} {{familyName}}</h2>
   </script>
 
   <script type="text/x-handlebars" id="kart">
@@ -112,9 +116,12 @@
   </script>
 
   <script type="text/x-handlebars" id="search">
-      {{#each model}}
-       {{givenName}} {{familyName}}
-      {{/each}}
+      <ul>
+          {{#each a in model}}
+            <li>{{#link-to 'ansatt' a.personId}}{{a.givenName}} {{a.familyName}}{{/link-to}}</li>
+          {{/each}}
+      </ul>
+
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
