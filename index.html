@@ -78,7 +78,36 @@
   </script>
 
   <script type="text/x-handlebars" id="avdeling">
-      <h2>{{departmentName}}</h2>
+      <h2>{{avdeling.departmentName}}</h2>
+      <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+              <th>Navn</th>
+              <th>E-post</th>
+              <th>Telefon</th>
+          </tr>
+          </thead>
+          <tbody>
+          {{#each a in ansatte}}
+          <tr>
+              <td>{{#link-to 'ansatt' a.personId}}{{a.givenName}} {{a.familyName}}{{/link-to}}</td>
+              <td>
+                  {{#if a.email}}
+                  <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{a.email}}">{{a.email}}</a>
+                  {{/if}}
+              </td>
+              <td>
+                  {{#if a.mobilePhone}}
+                  <span class="glyphicon glyphicon-phone"></span> <a href="tel:{{a.mobilePhone}}">{{a.mobilePhone}}</a>&nbsp;
+                  {{/if}}
+                  {{#if a.workPhone}}
+                  <span class="glyphicon glyphicon-earphone"></span> <a href="tel:{{a.workPhone}}">{{a.workPhone}}</a>
+                  {{/if}}
+              </td>
+          </tr>
+          {{/each}}
+          </tbody>
+      </table>
       {{outlet}}
   </script>
 

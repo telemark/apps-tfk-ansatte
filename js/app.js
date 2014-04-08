@@ -33,15 +33,28 @@ App.SearchRoute = Ember.Route.extend({
   }
 })
 
+
 App.AvdelingRoute = Ember.Route.extend({
-  model: function(params) {
-    return jQuery.ajax({
-      url: 'http://ws.t-fk.no/?resource=departments&search=departmentid&string=' + params.avdeling_id + '&format=json',
-      dataType: 'jsonp',
-      type: 'GET'
-    }).then(function(json){
-      return json.results[0];
+  model: function (params) {
+
+    var avdelingCall = jQuery.ajax({
+        url: 'http://ws.t-fk.no/?resource=departments&search=departmentid&string=' + params.avdeling_id + '&format=json',
+        dataType: 'jsonp',
+        type: 'GET'
+      }),
+        ansatteCall = jQuery.ajax({
+          url: 'http://ws.t-fk.no/?resource=persons&search=departmentid&string=' + params.avdeling_id + '&format=json',
+          dataType: 'jsonp',
+          type: 'GET'
+        });
+
+    return Ember.RSVP.Promise.all([avdelingCall,ansatteCall]).then(function(arr){
+      var avdeling = arr[0].results[0],
+          ansatte = arr[1].results;
+
+      return {avdeling:avdeling, ansatte:ansatte};
     });
+
   }
 });
 
