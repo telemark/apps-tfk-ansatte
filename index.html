@@ -12,19 +12,31 @@
 
   <script type="text/x-handlebars">
       <div class="header">
-          {{input type="text" placeholder="Søk etter ansatte" value=search action="doSearch"}}
-          <ul class="nav nav-pills pull-right">
-              {{#link-to 'index' tagName='li'}}
-                <a {{bind-attr href="view.href"}}>Hjem</a>
-              {{/link-to}}
-              {{#link-to 'avdelinger' tagName='li'}}
-                <a {{bind-attr href="view.href"}}>Avdelinger</a>
-              {{/link-to}}
-              {{#link-to 'personvern' tagName='li'}}
-              <a {{bind-attr href="view.href"}}>Personvern</a>
-              {{/link-to}}
-          </ul>
+     <ul class="nav nav-pills pull-right">
+       {{#link-to 'index' tagName='li'}}
+              <a {bind-attr href="view.href"}><span class="glyphicon glyphicon-home"></span> Hjem</a>
+      {{/link-to}}
+      {{#link-to 'avdelinger' tagName='li'}}
+      <a {bind-attr href="view.href"}><span class="glyphicon glyphicon-user"></span> Avdelinger</a>
+      {{/link-to}}
+      {{#link-to 'personvern' tagName='li'}}
+      <a {bind-attr href="view.href"}><span class="glyphicon glyphicon-tower"></span> Personvern</a>
+      {{/link-to}}
+
+      </ul>
+
+
+
           <h3 class="text-muted">Telemark fylkeskommune: ansatte</h3>
+
+
+              <div class="input-group">
+                  <label class="sr-only" for="SearchText">Søkekriterier</label>
+                  {{input type="text" id='SearchText' classNames="form-control" placeholder="Søk etter ansatte" value=search action="doSearch"}}
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" {{action 'doSearch'}}><span class="glyphicon glyphicon-search"></span> Søk</button>
+            </span>
+              </div>
       </div>
 
     {{outlet}}
@@ -36,6 +48,7 @@
             <a href="http://apps.t-fk.no/api" target="_blank" title="Besøk Telemark fylkeskommunes sider om åpne data, deling og API"><span class="glyphicon glyphicon-globe"></span> Åpne data/deling/API</a>
         </p>
     </div>
+
   </script>
 
   <script type="text/x-handlebars" id="index">
@@ -45,7 +58,7 @@
   </script>
 
   <script type="text/x-handlebars" id="avdelinger">
-      <h2>Avdelinger</h2>
+      <h1>Avdelinger</h1>
       <table class="table table-striped table-hover">
           <thead>
               <tr>
@@ -78,7 +91,7 @@
   </script>
 
   <script type="text/x-handlebars" id="avdeling">
-      <h2>{{avdeling.departmentName}}</h2>
+      <h1>{{avdeling.departmentName}}</h1>
       <table class="table table-striped table-hover">
           <thead>
           <tr>
@@ -112,7 +125,7 @@
   </script>
 
   <script type="text/x-handlebars" id="ansatt">
-      <h2>{{givenName}} {{familyName}}</h2>
+      <h1>{{givenName}} {{familyName}}</h1>
   </script>
 
   <script type="text/x-handlebars" id="kart">
@@ -120,9 +133,9 @@
   </script>
 
   <script type="text/x-handlebars" id="personvern">
-
+      <h1>Personvernerklæring</h1>
       <div class="col-lg-9">
-          <h1>Personvernerklæring</h1>
+
 
           <div class="lead">
               Les om hvordan Telemarks fylkeskommune samler inn og bruker informasjon om besøkende på våre nettsteder.
@@ -166,6 +179,7 @@
   </script>
 
   <script type="text/x-handlebars" id="search">
+      <h1>Søkeresultat</h1>
       <table class="table table-striped table-hover">
           <thead>
               <tr>
