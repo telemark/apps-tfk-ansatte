@@ -171,7 +171,9 @@
   </script>
 
   <script type="text/x-handlebars" id="avdeling/kart">
-      Jeg er et kart
+      {{#each places}}
+        {{google-map name=name address=address}}
+      {{/each}}
   </script>
 
   <script type="text/x-handlebars" id="ansatt">
@@ -299,6 +301,17 @@
       {{/if}}
   </script>
 
+  <script type="text/x-handlebars" id="components/google-map">
+      {{#if name}}
+        <h2>{{name}}</h2>
+      {{/if}}
+      <iframe width="600" height="450" frameborder="0" style="border:0" {{bind-attr src=fullAdresse}}/></script></iframe>
+      {{address}}
+
+      {{fullAdresse}}
+  </script>
+
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAu4oe2bKCeP4AnAyo78KL_XZvrS-WVIcw&sensor=false"></script>
   <script src="js/libs/jquery-1.10.2.js"></script>
   <script src="js/libs/handlebars-1.1.2.js"></script>
   <script src="js/libs/ember-1.5.0.js"></script>

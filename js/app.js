@@ -125,3 +125,11 @@ App.AnsattRoute = Ember.Route.extend({
     });
   }
 });
+
+App.GoogleMapComponent = Ember.Component.extend({
+  mapAdresse:'',
+  fullAdresse: function(){
+    var adr = this.get('address');
+    return "https://www.google.com/maps/embed/v1/place?key=AIzaSyAu4oe2bKCeP4AnAyo78KL_XZvrS-WVIcw&q=" + encodeURIComponent(adr);
+  }.property('mapAdresse')
+});
