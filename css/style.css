@@ -76,3 +76,7 @@ a {
     color: black;
     text-decoration: underline;
 }
+
+.width20 {
+    width: 20px;
+}
