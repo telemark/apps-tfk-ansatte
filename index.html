@@ -177,6 +177,37 @@
 
   <script type="text/x-handlebars" id="ansatt">
       <h1>{{givenName}} {{familyName}}</h1>
+      <table class="table">
+          <tbody>
+            {{#if email}}
+                <tr>
+                  <td><span class="glyphicon glyphicon-envelope"></span></td>
+                   <td><a {{bind-attr href=formattedMail}} title="Send e-post">{{email}}</a></td>
+                </tr>
+            {{/if}}
+            {{#if mobilePhone}}
+            <tr>
+                <td><span class="glyphicon glyphicon-phone"></span></td>
+                <td><a {{bind-attr href=formattedMobile}} title="Ring mobilen">{{mobilePhone}}</a></td>
+            </tr>
+            {{/if}}
+
+            {{#if workPhone}}
+            <tr>
+                <td><span class="glyphicon glyphicon-earphone"></span></td>
+                <td><a {{bind-attr href=formattedPhone}} title="Ring telefonen">{{workPhone}}</a></td>
+            </tr>
+            {{/if}}
+
+            {{#each a in positions}}
+            <tr>
+                <td><span class="glyphicon glyphicon-home"></span></td>
+                <td>{{#link-to 'avdeling' a.departmentId}}{{a.departmentName}}{{/link-to}}</td>
+            </tr>
+            {{/each}}
+
+          </tbody>
+      </table>
   </script>
 
   <script type="text/x-handlebars" id="personvern">
