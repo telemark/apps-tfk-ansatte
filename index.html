@@ -68,26 +68,23 @@
               </tr>
           </thead>
           <tbody>
-          {{#each a in model}}
+          {{#each}}
             <tr>
-                <td>{{#link-to 'avdeling' a.departmentId}}{{a.departmentName}}{{/link-to}}</td>
+                <td>{{#link-to 'avdeling' departmentId}}{{departmentName}}{{/link-to}}</td>
                 <td>
-                    {{#if a.email}}
-                        <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{a.email}}">{{a.email}}</a>
+                    {{#if email}}
+                        <span class="glyphicon glyphicon-envelope"></span> <a {{bind-attr href=formattedMail}} title="Send e-post">{{email}}</a>
                     {{/if}}
                 </td>
                 <td>
-                    {{#if a.url}}
-                        <span class="glyphicon glyphicon-globe"></span> <a href="http://{{a.url}}">{{a.url}}</a>
+                    {{#if url}}
+                        <span class="glyphicon glyphicon-globe"></span> <a {{bind-attr href=formattedUrl}} target="_blank" title="Besøk nettsiden (åpnes i nytt vindu)">{{url}}</a>
                     {{/if}}
                 </td>
             </tr>
           {{/each}}
           </tbody>
       </table>
-      <ul>
-
-      </ul>
   </script>
 
   <script type="text/x-handlebars" id="avdeling">
@@ -152,20 +149,20 @@
           </tr>
           </thead>
           <tbody>
-          {{#each a in model}}
+          {{#each}}
           <tr>
-              <td>{{#link-to 'ansatt' a.personId}}{{a.givenName}} {{a.familyName}}{{/link-to}}</td>
+              <td>{{#link-to 'ansatt' personId}}{{givenName}} {{familyName}}{{/link-to}}</td>
               <td>
-                  {{#if a.email}}
-                  <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{a.email}}">{{a.email}}</a>
+                  {{#if email}}
+                  <span class="glyphicon glyphicon-envelope"></span> <a {{bind-attr href=formattedMail}} title="Send e-post">{{email}}</a>
                   {{/if}}
               </td>
               <td>
-                  {{#if a.mobilePhone}}
-                  <span class="glyphicon glyphicon-phone"></span> <a href="tel:{{a.mobilePhone}}">{{a.mobilePhone}}</a>&nbsp;
+                  {{#if mobilePhone}}
+                  <span class="glyphicon glyphicon-phone"></span> <a {{bind-attr href=formattedMobile}} title="Ring mobilen">{{mobilePhone}}</a>&nbsp;
                   {{/if}}
-                  {{#if a.workPhone}}
-                  <span class="glyphicon glyphicon-earphone"></span> <a href="tel:{{a.workPhone}}">{{a.workPhone}}</a>
+                  {{#if workPhone}}
+                  <span class="glyphicon glyphicon-earphone"></span> <a {{bind-attr href=formattedPhone}} title="Ring telefonen">{{workPhone}}</a>
                   {{/if}}
               </td>
           </tr>
@@ -242,27 +239,27 @@
               </tr>
           </thead>
           <tbody>
-          {{#each a in model}}
+          {{#each}}
               <tr>
-                  <td>{{#link-to 'ansatt' a.personId}}{{a.givenName}} {{a.familyName}}{{/link-to}}</td>
+                  <td>{{#link-to 'ansatt' personId}}{{givenName}} {{familyName}}{{/link-to}}</td>
                   <td>
-                      {{#if a.positions}}
-                        {{#each d in a.positions}}
+                      {{#if positions}}
+                        {{#each d in positions}}
                             <span class="glyphicon glyphicon-home"></span> {{#link-to 'avdeling' d.departmentId}}{{d.departmentName}}{{/link-to}}&nbsp;
                         {{/each}}
                       {{/if}}
                   </td>
                   <td>
-                      {{#if a.email}}
-                        <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:{{a.email}}">{{a.email}}</a>
+                      {{#if email}}
+                        <span class="glyphicon glyphicon-envelope"></span> <a {{bind-attr href=formattedMail}}>{{email}}</a>
                       {{/if}}
                   </td>
                   <td>
-                      {{#if a.mobilePhone}}
-                        <span class="glyphicon glyphicon-phone"></span> <a href="tel:{{a.mobilePhone}}">{{a.mobilePhone}}</a>&nbsp;
+                      {{#if mobilePhone}}
+                        <span class="glyphicon glyphicon-phone"></span> <a {{bind-attr href=formattedMobile}} title="Ring mobilen">{{mobilePhone}}</a>&nbsp;
                       {{/if}}
-                      {{#if a.workPhone}}
-                        <span class="glyphicon glyphicon-earphone"></span> <a href="tel:{{a.workPhone}}">{{a.workPhone}}</a>
+                      {{#if workPhone}}
+                        <span class="glyphicon glyphicon-earphone"></span> <a {{bind-attr href=formattedPhone}} title="Ring telefonen">{{workPhone}}</a>
                       {{/if}}
                   </td>
               </tr>

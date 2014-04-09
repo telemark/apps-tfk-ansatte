@@ -21,6 +21,10 @@ App.ApplicationController = Ember.Controller.extend({
   }
 });
 
+App.SearchController = Ember.ArrayController.extend({
+  itemController: 'ansatt'
+});
+
 App.SearchRoute = Ember.Route.extend({
   model: function(params){
     return jQuery.ajax({
@@ -32,6 +36,22 @@ App.SearchRoute = Ember.Route.extend({
     });
   }
 })
+
+App.AvdelingerController = Ember.ArrayController.extend({
+  itemController: 'avdeling'
+});
+
+App.AvdelingerRoute = Ember.Route.extend({
+  model: function() {
+    return jQuery.ajax({
+      url: 'http://ws.t-fk.no/?resource=departments&search=all&format=json',
+      dataType: 'jsonp',
+      type: 'GET'
+    }).then(function(json){
+      return json.results;
+    });
+  }
+});
 
 App.AvdelingController = Ember.ObjectController.extend({
   realUrl:'',
@@ -56,6 +76,10 @@ App.AvdelingRoute = Ember.Route.extend({
   }
 });
 
+App.AvdelingAnsatteController = Ember.ArrayController.extend({
+  itemController: 'ansatt'
+});
+
 App.AvdelingAnsatteRoute = Ember.Route.extend({
   model: function(){
     var avdeling_id = this.modelFor('avdeling').departmentId;
@@ -75,6 +99,21 @@ App.AvdelingKartRoute = Ember.Route.extend({
   }
 });
 
+App.AnsattController = Ember.ObjectController.extend({
+  realMail:'',
+  realMobile:'',
+  realPhone:'',
+  formattedMail: function(){
+    return "mailto:" + this.get('email');
+  }.property('realMail'),
+  formattedMobile: function(){
+    return "tel:+47" + this.get('mobilePhone');
+  }.property('realMobile'),
+  formattedPhone: function(){
+    return "tel:+47" + this.get('workPhone');
+  }.property('realPhone')
+});
+
 App.AnsattRoute = Ember.Route.extend({
   model: function(params) {
     return jQuery.ajax({
@@ -86,19 +125,3 @@ App.AnsattRoute = Ember.Route.extend({
     });
   }
 });
-
-App.AvdelingerRoute = Ember.Route.extend({
-  model: function() {
-    return jQuery.ajax({
-      url: 'http://ws.t-fk.no/?resource=departments&search=all&format=json',
-      dataType: 'jsonp',
-      type: 'GET'
-    }).then(function(json){
-      return json.results;
-    });
-  }
-});
-
-Ember.Handlebars.helper('realUrl', function(url){
-  return "http://" + url;
-})
