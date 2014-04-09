@@ -33,6 +33,17 @@ App.SearchRoute = Ember.Route.extend({
   }
 })
 
+App.AvdelingController = Ember.ObjectController.extend({
+  realUrl:'',
+  realMail:'',
+  formattedUrl: function(){
+    return "http://" + this.get('url');
+  }.property('realUrl'),
+  formattedMail: function(){
+    return "mailto:" + this.get('email');
+  }.property('realMail')
+});
+
 App.AvdelingRoute = Ember.Route.extend({
   model: function (params) {
     return jQuery.ajax({
@@ -87,3 +98,7 @@ App.AvdelingerRoute = Ember.Route.extend({
     });
   }
 });
+
+Ember.Handlebars.helper('realUrl', function(url){
+  return "http://" + url;
+})

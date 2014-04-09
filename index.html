@@ -92,6 +92,45 @@
 
   <script type="text/x-handlebars" id="avdeling">
       <h1>{{departmentName}}</h1>
+      <table class="table">
+          <tbody>
+            {{#if email}}
+                <tr>
+                  <td><span class="glyphicon glyphicon-envelope"></span></td>
+                  <td><a {{bind-attr href=formattedMail}} title="Send e-post">{{email}}</a></td>
+                </tr>
+            {{/if}}
+            {{#if url}}
+                <tr>
+                    <td><span class="glyphicon glyphicon-globe"></span></td>
+                    <td><a {{bind-attr href=formattedUrl}} target="_blank" title="Besøk nettstedet (åpnes i nytt vindu)">{{url}}</a></td>
+                </tr>
+            {{/if}}
+            {{#if openingHours}}
+                <tr>
+                    <td><span class="glyphicon glyphicon-time"></span></td>
+                    <td>{{openingHours}}</td>
+                </tr>
+            {{/if}}
+            {{#each places}}
+                {{#if name}}
+                    <tr>
+                        <td></td>
+                        <td><strong>{{name}}</strong></td>
+                    </tr>
+                {{/if}}
+                <tr>
+                    <td><span class="glyphicon glyphicon-home"></span></td>
+                    <td>{{address}}</td>
+                </tr>
+                <tr>
+                    <td><span class="glyphicon glyphicon-phone-alt"></span></td>
+                    <td>{{phone}}</td>
+                </tr>
+            {{/each}}
+          </tbody>
+
+      </table>
       <ul class="nav nav-pills">
           {{#link-to 'avdeling.ansatte' tagName='li'}}
             <a {bind-attr href="view.href"}>Vis ansatte</a>
@@ -190,7 +229,9 @@
   </script>
 
   <script type="text/x-handlebars" id="search">
-      <h1>Søkeresultat</h1>
+      <h1>Søkeresultat{{#if model}}: {{model.length}} treff{{/if}}</h1>
+
+      {{#if model}}
       <table class="table table-striped table-hover">
           <thead>
               <tr>
@@ -228,6 +269,7 @@
           {{/each}}
           </tbody>
       </table>
+      {{/if}}
   </script>
 
   <script src="js/libs/jquery-1.10.2.js"></script>
