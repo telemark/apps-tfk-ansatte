@@ -40,6 +40,8 @@ App.SearchRoute = Ember.Route.extend({
 })
 
 App.AvdelingerController = Ember.ArrayController.extend({
+  sortProperties: ['departmentName'],
+  sortAscending: true,
   itemController: 'avdeling'
 });
 
@@ -56,7 +58,6 @@ App.AvdelingerRoute = Ember.Route.extend({
 });
 
 App.AvdelingController = Ember.ObjectController.extend({
-  ShowMapButton: false,
   realUrl:'',
   realMail:'',
   formattedUrl: function(){

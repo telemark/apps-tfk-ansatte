@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <script type="text/x-handlebars">
+  <script type="text/x-handlebars" id="application">
       <div class="header">
      <ul class="nav nav-pills pull-right">
        {{#link-to 'index' tagName='li'}}
@@ -131,11 +131,9 @@
           {{#link-to 'avdeling.ansatte' tagName='li'}}
             <a {bind-attr href="view.href"}>Vis ansatte</a>
           {{/link-to}}
-          {{#unless ShowMapButton}}
-              {{#link-to 'avdeling.kart' tagName='li'}}
-                <a {bind-attr href="view.href"}>Vis kart</a>
-              {{/link-to}}
-          {{/unless}}
+          {{#link-to 'avdeling.kart' tagName='li'}}
+            <a {bind-attr href="view.href"}>Vis kart</a>
+          {{/link-to}}
       </ul>
       {{outlet}}
   </script>
