@@ -131,9 +131,11 @@
           {{#link-to 'avdeling.ansatte' tagName='li'}}
             <a {bind-attr href="view.href"}>Vis ansatte</a>
           {{/link-to}}
-          {{#link-to 'avdeling.kart' tagName='li'}}
-            <a {bind-attr href="view.href"}>Vis kart</a>
-          {{/link-to}}
+          {{#unless ShowMapButton}}
+              {{#link-to 'avdeling.kart' tagName='li'}}
+                <a {bind-attr href="view.href"}>Vis kart</a>
+              {{/link-to}}
+          {{/unless}}
       </ul>
       {{outlet}}
   </script>

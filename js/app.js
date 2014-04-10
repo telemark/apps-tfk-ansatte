@@ -22,6 +22,8 @@ App.ApplicationController = Ember.Controller.extend({
 });
 
 App.SearchController = Ember.ArrayController.extend({
+  sortProperties: ['familyName', 'givenName'],
+  sortAscending: true,
   itemController: 'ansatt'
 });
 
@@ -54,6 +56,7 @@ App.AvdelingerRoute = Ember.Route.extend({
 });
 
 App.AvdelingController = Ember.ObjectController.extend({
+  ShowMapButton: false,
   realUrl:'',
   realMail:'',
   formattedUrl: function(){
