@@ -305,10 +305,9 @@
       {{#if name}}
         <h2>{{name}}</h2>
       {{/if}}
-      <iframe width="600" height="450" frameborder="0" style="border:0" {{bind-attr src=fullAdresse}}/></script></iframe>
-      {{address}}
-
-      {{fullAdresse}}
+      <div class="fluid-wrapper">
+          <iframe width="600" height="480" frameborder="0" style="border:0" {{bind-attr src=fullAdresse}}/></iframe>
+      </div>
   </script>
 
   <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAu4oe2bKCeP4AnAyo78KL_XZvrS-WVIcw&sensor=false"></script>
