@@ -30,7 +30,7 @@ App.SearchController = Ember.ArrayController.extend({
 App.SearchRoute = Ember.Route.extend({
   model: function(params){
     return jQuery.ajax({
-      url: 'http://ws.t-fk.no/?resource=persons&search=fullname&string=' + params.query + '&format=json',
+      url: 'https://ansatt.api.service.t-fk.no/?resource=persons&search=fullname&string=' + params.query + '&format=json',
       dataType: 'jsonp',
       type: 'GET'
     }).then(function(json){
@@ -48,7 +48,7 @@ App.AvdelingerController = Ember.ArrayController.extend({
 App.AvdelingerRoute = Ember.Route.extend({
   model: function() {
     return jQuery.ajax({
-      url: 'http://ws.t-fk.no/?resource=departments&search=all&format=json',
+      url: 'https://ansatt.api.service.t-fk.no/?resource=departments&search=all&format=json',
       dataType: 'jsonp',
       type: 'GET'
     }).then(function(json){
@@ -71,7 +71,7 @@ App.AvdelingController = Ember.ObjectController.extend({
 App.AvdelingRoute = Ember.Route.extend({
   model: function (params) {
     return jQuery.ajax({
-        url: 'http://ws.t-fk.no/?resource=departments&search=departmentid&string=' + params.avdeling_id + '&format=json',
+        url: 'https://ansatt.api.service.t-fk.no/?resource=departments&search=departmentid&string=' + params.avdeling_id + '&format=json',
         dataType: 'jsonp',
         type: 'GET'
       }).then(function(json){
@@ -88,7 +88,7 @@ App.AvdelingAnsatteRoute = Ember.Route.extend({
   model: function(){
     var avdeling_id = this.modelFor('avdeling').departmentId;
     return jQuery.ajax({
-      url: 'http://ws.t-fk.no/?resource=persons&search=departmentid&string=' + avdeling_id + '&format=json',
+      url: 'https://ansatt.api.service.t-fk.no/?resource=persons&search=departmentid&string=' + avdeling_id + '&format=json',
       dataType: 'jsonp',
       type: 'GET'
     }).then(function(json){
@@ -121,7 +121,7 @@ App.AnsattController = Ember.ObjectController.extend({
 App.AnsattRoute = Ember.Route.extend({
   model: function(params) {
     return jQuery.ajax({
-      url: 'http://ws.t-fk.no/?resource=persons&search=personid&string=' + params.ansatt_id + '&format=json',
+      url: 'https://ansatt.api.service.t-fk.no/?resource=persons&search=personid&string=' + params.ansatt_id + '&format=json',
       dataType: 'jsonp',
       type: 'GET'
     }).then(function(json){

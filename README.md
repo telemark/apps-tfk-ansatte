@@ -6,7 +6,7 @@ Sidene kan sees på [apps.t-fk.no/ansatte](http://apps.t-fk.no/ansatte)
 
 ## Slik setter du opp din egen kopi
 
-Nettløsningen bruker [Ember.js](http://emberjs.com/), [Bootstrap](http://getbootstrap.com/) og Telemark fylkeskommunes [åpne API](http://ws.t-fk.no/help/index.html).
+Nettløsningen bruker [Ember.js](http://emberjs.com/), [Bootstrap](http://getbootstrap.com/) og Telemark fylkeskommunes [åpne API](https://ansatt.api.service.t-fk.no/help/index.html).
 
 Start med å klone repoet fra GitHub.
 
@@ -23,7 +23,7 @@ For å kjøre [QUnit](https://qunitjs.com/)-testene legger du til "?test" på sl
 
 Løsningen benytter Telemark fylkeskommunes åpne API.
 
-Les mer om webservicene på [ws.t-fk.no/help/index.html](http://ws.t-fk.no/help/index.html) og om hva vi deler på [apps.t-fk.no/api](http://apps.t-fk.no/api/#/)
+Les mer om webservicene på [ws.t-fk.no/help/index.html](https://ansatt.api.service.t-fk.no/help/index.html) og om hva vi deler på [apps.t-fk.no/api](http://apps.t-fk.no/api/#/)
 
 ## Lisens
 MIT
