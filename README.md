@@ -2,7 +2,7 @@
 
 Nettsiden som viser kontaktinformasjon for ansatte og avdelinger i Telemark fylkeskommune.
 
-Sidene kan sees på [apps.t-fk.no/ansatte](http://apps.t-fk.no/ansatte)
+Sidene kan sees på [ansatt.service.t-fk.no](https://ansatt.service.t-fk.no)
 
 ## Slik setter du opp din egen kopi
 
